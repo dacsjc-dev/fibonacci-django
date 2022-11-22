@@ -1,0 +1,21 @@
+FROM python:3.10.0-alpine
+
+ENV PYTHONUNBUFFERED=1
+
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev libc-dev
+
+WORKDIR /app
+
+RUN pip install --upgrade pip
+RUN pip install gunicorn
+
+COPY ./requirements.txt /app
+RUN pip install -r /app/requirements.txt
+
+COPY ./backend/ /app/backend/
+COPY ./docker/ /app/docker/
+
+RUN chmod +x /app/docker/backend/entrypoint-celery.sh
+
+ENTRYPOINT ["sh", "/app/docker/backend/entrypoint-celery.sh"]
