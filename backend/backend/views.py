@@ -2,10 +2,14 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.test import APIRequestFactory
+from django.http import HttpResponse
 
 from .models import Fibonacci as FibonacciModel
 from .serializers import FibonacciSerializer
 from .fibonacci import Fibonacci
+
+def index(request):
+    return HttpResponse("Hello, world. You're at fibonacci tool.")
 
 @api_view(['GET', 'POST'])
 def fibonacci_list(request, format=None):

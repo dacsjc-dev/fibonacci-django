@@ -17,12 +17,20 @@ from django.contrib import admin
 from django.urls import path
 from backend import views
 from rest_framework.urlpatterns import format_suffix_patterns
+from django.conf.urls.static import static
+from django.conf import settings
 
-
+# Django Defaults
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/fibonacci/', views.fibonacci_list, name="fibonacci"),
-    path('api/fibonacci/<int:id>', views.fibonacci_detail, name="fibonacci_detail"),
+    path('', views.index)
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+# API
+urlpatterns += format_suffix_patterns([
+    path('api/fibonacci/', views.fibonacci_list, name="fibonacci"),
+    path('api/fibonacci/<int:id>', views.fibonacci_detail, name="fibonacci_detail"),
+])
+
+# Loading Static Fiels
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
