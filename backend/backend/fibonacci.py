@@ -33,8 +33,7 @@ class Fibonacci:
             elif (result['status'] == "success"):
                 result['nth'] = str(serializer.data['fibonacci_value'])
             elif (result['status'] == "" or serializer.data['input_value'] is None):
-                print("Creating Data Inner")
-                return self.create_fibonacci_pending(nterm)
+                result = self.create_fibonacci_pending(nterm)
             return result
         except FibonacciModel.DoesNotExist:
             print("Creating ")
@@ -56,8 +55,8 @@ class Fibonacci:
             serializer.save()
             result['message'] =  "Processing your request..."
             self.process_fibonacci(id=serializer.data['id'])
+
             return result
-    
         result['status'] = "Error"
         result['message'] = "Failed to store request of fibonacci in database. Please try again."
         return result

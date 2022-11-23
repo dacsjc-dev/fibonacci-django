@@ -1,0 +1,8 @@
+.venv
+
+# Python Cache
+*.pyc
+
+# Database Migration
+**/migrations/
+db.sqlite3

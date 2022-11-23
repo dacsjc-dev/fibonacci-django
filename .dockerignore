@@ -1,0 +1,18 @@
+# ignore .git and .cache folders
+.git
+.gitignore
+.cache
+
+# ignore all markdown files (md) beside all README*.md other than README-secret.md
+*.md
+!README*.md
+
+# ignore virtual environment of python
+.venv
+
+# Python Cache
+*.pyc
+
+# Database Migration
+**/migrations/
+db.sqlite3

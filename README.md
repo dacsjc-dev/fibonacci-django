@@ -1,18 +1,40 @@
-# Fibonnaci (Docker, Django and NGINX)
+# Fibonnaci Tool (Docker, Django, and NGINX)
 
-## Building the Project
+
+## Building/Running the Application Through Docker
 enter command below to docker terminal
 ```
 docker-compose up --build -d
 ```
 
+## Building the Application Through .venv
+```
+python -m venv ./backend/.venv
+. ./initVenv.sh
+pip install -r ../requirements.txt
+```
+
 ## Running the app 
-Enter 127.0.0.1:8000 browser to access
+Ensure first if your (.venv) is activated and your in the /backend directory, 
+by executing this in your terminal
+```
+. ./initVenv.sh
+```
+
+But if you're already in the /backend directory, execute this instead
+```
+. .venv/Scripts/activate
+```
+
+Then enter 127.0.0.1:8000 or localhost:8000 into the browser
 
 ## Fibonacci API Endpoints
-#### POST - Creating Fibonacci
-endpoint: 127.0.0.1:8000/api/fibonacci/
-request body content:
+#### Creating Fibonacci
+Endpoint: 127.0.0.1:8000/api/fibonacci/
+
+Request-type: POST
+
+Request body content:
 
 ```
 {
@@ -20,8 +42,12 @@ request body content:
 }
 ```
 
-#### GET - endpoint for retrieving all list
-endpoint: 127.0.0.1:8000/api/fibonacci/
+#### Retrieving all list
+Endpoint: 127.0.0.1:8000/api/fibonacci/
 
-#### GET - Retrieving specific fibonacci by ID
-endpoint: 127.0.0.1:8000/api/fibonacci/1
+Request-type: GET
+
+#### Retrieving specific fibonacci by ID
+Endpoint: 127.0.0.1:8000/api/fibonacci/:ID
+
+Request-type: GET

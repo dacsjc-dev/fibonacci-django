@@ -29,7 +29,7 @@ urlpatterns = [
 # API
 urlpatterns += format_suffix_patterns([
     path('api/fibonacci/', views.fibonacci_list, name="fibonacci"),
-    path('api/fibonacci/<int:id>', views.fibonacci_detail, name="fibonacci_detail"),
+    path('api/fibonacci/<int:id>', views.fibonacci_detail, name="fibonacci-details"),
 ])
 
 # Loading Static Fiels
