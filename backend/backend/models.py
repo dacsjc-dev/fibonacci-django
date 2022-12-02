@@ -11,8 +11,8 @@ class UserProfile(AbstractUser):
         return str(self.id) + ' - ' + self.username
 
 class Fibonacci(models.Model):
-    input_value = models.IntegerField()
-    fibonacci_value = models.IntegerField(blank=True, null=True)
+    input_value = models.CharField(max_length=(255))
+    fibonacci_value = models.CharField(max_length=(255),blank=True, null=True)
     status = models.CharField(max_length=(255),default="pending")
     user_id = models.ForeignKey(
         UserProfile,
