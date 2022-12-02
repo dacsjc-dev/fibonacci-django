@@ -26,9 +26,8 @@ def fibonacci_list(request, format=None):
 
                 if result['status'] == "Invalid":
                     resultStatus = status.HTTP_400_BAD_REQUEST
-
                 return Response(result, status=resultStatus)
-    
+
             raise KeyError()
     except KeyError:
         result = dict()

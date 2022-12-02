@@ -14,11 +14,5 @@ class Fibonacci(models.Model):
     input_value = models.CharField(max_length=(255))
     fibonacci_value = models.CharField(max_length=(255),blank=True, null=True)
     status = models.CharField(max_length=(255),default="pending")
-    user_id = models.ForeignKey(
-        UserProfile,
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True
-    )
     def __str__(self):
         return str(self.input_value) + ' -> ' + str(self.fibonacci_value) + ', Inputted by: ' + str(self.user_id)
